@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/home_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,11 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-      home: const Center(
-        child: Material(
-          child: Text('Welcome to 30 days of flutter'),
-        ),
-      ),
+      home: HomePage(),
     );
   }
 }
