@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/utils/routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  get style => null;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,9 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Text("Welcome"),
+          const Text(
+            "Welcome",
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -29,6 +34,7 @@ class LoginPage extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Enter Password", labelText: "Password"),
+                  obscureText: true,
                 ),
               ],
             ),
@@ -37,10 +43,12 @@ class LoginPage extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () {
-                print("Pressed");
-              },
-              child: const Text("Login"))
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.homeRoute);
+            },
+            child: const Text("Login"),
+            style: TextButton.styleFrom(minimumSize: const Size(150, 40)),
+          )
         ],
       ),
     );
