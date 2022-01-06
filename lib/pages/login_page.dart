@@ -1,10 +1,20 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/pages/home_page.dart';
 import 'package:flutter_catlog/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   get style => null;
+  String name = "";
+  bool changebutton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +27,10 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            "Welcome",
+          Text(
+            "Welcome $name",
+            style: const TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.pink),
           ),
           const SizedBox(
             height: 20,
@@ -30,6 +42,10 @@ class LoginPage extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Enter Usename", labelText: "Username"),
+                  onChanged: (value) {
+                    name = value;
+                    setState(() {});
+                  },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -42,13 +58,32 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-            onPressed: () {
+          InkWell(
+            onTap: () async {
+              setState(() {
+                changebutton = true;
+              });
+              await Future.delayed(Duration(seconds: 1));
               Navigator.pushNamed(context, MyRoutes.homeRoute);
             },
-            child: const Text("Login"),
-            style: TextButton.styleFrom(minimumSize: const Size(150, 40)),
-          )
+            child: AnimatedContainer(
+              duration: Duration(seconds: 1),
+              height: 60,
+              width: 60,
+              child: changebutton
+                  ? Icon(
+                      Icons.done,
+                      color: Colors.white,
+                    )
+                  : Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: changebutton ? Colors.green : Colors.pink),
+            ),
+          ),
         ],
       ),
     );
