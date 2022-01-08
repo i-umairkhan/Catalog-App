@@ -14,6 +14,16 @@ class _LoginPageState extends State<LoginPage> {
   get style => null;
   String name = "";
   bool changebutton = false;
+  movetohome(BuildContext context) async {
+    setState(() {
+      changebutton = true;
+    });
+    await Future.delayed(Duration(seconds: 1));
+    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    setState(() {
+      changebutton = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 20,
           ),
           InkWell(
-            onTap: () async {
-              setState(() {
-                changebutton = true;
-              });
-              await Future.delayed(Duration(seconds: 1));
-              Navigator.pushNamed(context, MyRoutes.homeRoute);
-            },
+            onTap: () => movetohome(context),
             child: AnimatedContainer(
               duration: Duration(seconds: 1),
               height: 60,
@@ -82,6 +86,17 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(30),
                   color: changebutton ? Colors.green : Colors.pink),
             ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Text(
+            "Flutter Catlog Application",
+            style: TextStyle(fontSize: 10, color: Colors.grey),
+          ),
+          Text(
+            "2020 v1.0",
+            style: TextStyle(fontSize: 10, color: Colors.grey),
           ),
         ],
       ),
