@@ -19,6 +19,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
         fontFamily: GoogleFonts.lato().fontFamily,
+        appBarTheme: const AppBarTheme(
+            elevation: 0.0,
+            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: Colors.black),
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            )),
       ),
       initialRoute: "/home",
       routes: {
