@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/pages/catalog.dart';
 import 'package:flutter_catlog/utils/drawer.dart';
+import 'package:flutter_catlog/utils/item_widget.dart';
+// import 'package:flutter_catlog/models/catalog.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,11 +10,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pink,
       appBar: AppBar(
         title: const Text("Catlog App"),
       ),
-      body: const Center(
-        child: Text('Welcome to 30 days of flutter'),
+      body: ListView.builder(
+        itemCount: CatalogModel.items.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ItemWidget(
+            item: CatalogModel.items[index],
+          );
+        },
       ),
       drawer: const MyDrwer(),
     );
