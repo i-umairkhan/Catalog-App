@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.lato().fontFamily,
         appBarTheme: const AppBarTheme(
             elevation: 0.0,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.pink,
             iconTheme: IconThemeData(color: Colors.black),
             titleTextStyle: TextStyle(
               color: Colors.black,
