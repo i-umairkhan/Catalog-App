@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/pages/home_page.dart';
+import 'package:flutter_catlog/pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,11 +14,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-      home: const Center(
-        child: Material(
-          child: Text('Welcome to 30 days of flutter'),
-        ),
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+        fontFamily: GoogleFonts.lato().fontFamily,
+        appBarTheme: const AppBarTheme(
+            elevation: 0.0,
+            backgroundColor: Colors.pink,
+            iconTheme: IconThemeData(color: Colors.black),
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            )),
       ),
+      initialRoute: "/home",
+      routes: {
+        "/": (context) => const LoginPage(),
+        "/home": (context) => const HomePage(),
+        "/login": (context) => const LoginPage(),
+      },
     );
   }
 }
